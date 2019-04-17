@@ -1,0 +1,23 @@
+PRojeto de ANDROID:
+======================================
+- TELA PRINCIPAL: 
+	ListView
+        button circular(float action button)
+	AlignParentEnd:  
+		android:layout_alignParentEnd="true" //ficar o botao em baixo
+        	android:layout_alignBottom="true"
+	
+	Action bar and Tab icons
+
+
+-> MAin activity: 
+	-listView e button float
+	-Aqui estara listados os alunos que esta no ARRAYLIST com todos os dados
+	-Ao clicar no button float vai para INcluir aluno:
+	
+- Incluir Aluno
+	NOME
+	TELEFONE
+	EMAIL
+	BOTAO SALVAR
+	-E conforme vai incluindo vai printando os alunos ja existentes na MainActivity
