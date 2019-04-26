@@ -40,12 +40,14 @@ public class MainActivity extends AppCompatActivity{
 
 
         listAlunos = findViewById(R.id.listAlunos);
-        btnAdicionar = findViewById(R.id.floatingActionButton);
+        btnAdicionar = findViewById(R.id.btnAdicionar);
 
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(MainActivity.this, Adicionar.class);
+                startActivity(intent);
+                //Toast.makeText(getBaseContext(),"Entrou no click",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity{
         listaAlunos.add(al1);
         listaAlunos.add(al2);
         listarAlunos(); //de inicio nao ha nenhum aluno noa array, so havera alunos quando houver a primeira
-                        //inclusao e as demais posteriores
+                        //inclusao e as demais posteriores*/
     }
 
     private void listarAlunos(){

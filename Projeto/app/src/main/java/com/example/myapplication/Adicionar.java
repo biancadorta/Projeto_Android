@@ -12,7 +12,7 @@ public class Adicionar extends AppCompatActivity {
     Button btnIncluir;
     TextView txtEmail;
     TextView txtNome;
-    TextView txtTelefone;
+    TextView txtPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +20,7 @@ public class Adicionar extends AppCompatActivity {
 
         txtEmail = findViewById(R.id.txtEmail);
         txtNome  = findViewById(R.id.txtNome);
-        txtTelefone = findViewById(R.id.txtPhone);
+        txtPhone = findViewById(R.id.txtPhone);
         btnIncluir = findViewById(R.id.btnIncluir);
 
         btnIncluir.setOnClickListener(new View.OnClickListener() {
@@ -32,7 +32,7 @@ public class Adicionar extends AppCompatActivity {
                 //verificar se o usuario realmente preencheu os campos
                 params.putString("email", txtEmail.getText().toString());
                 params.putString("nome", txtNome.getText().toString());
-                params.putString("telefone", txtTelefone.getText().toString());
+                params.putString("telefone", txtPhone.getText().toString());
 
                 intent.putExtras(params); //o metodo putExtras e usado para receber o objeto Bundle que sera passado para a outra tela
 
