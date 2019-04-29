@@ -1,4 +1,4 @@
-package com.example.myapplication;
+﻿package com.example.myapplication;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -64,5 +64,13 @@ public class MainActivity extends AppCompatActivity{
         //pega os alunos do array list e os lista na tela
         ArrayAdapter<Aluno> alunosAdapter = new ArrayAdapter<Aluno>(this,android.R.layout.simple_list_item_1,listaAlunos);
         listAlunos.setAdapter(alunosAdapter);
+    }
+    
+    public class MyAsyncTask extends AsyncTask<,Progresso,Resultado>{
+
+    
+
+
+    
     }
 }
