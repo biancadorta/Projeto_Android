@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.R.layout;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.R.layout.*;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -27,15 +31,21 @@ public class MainActivity extends AppCompatActivity{
             Intent intent = getIntent();
             Bundle params = intent.getExtras(); //o metodo getExtras -> retorna o objeto Bundle criado para enviar os parametros
 
-            String email = params.getString("email");
-            String nome  = params.getString("nome");
-            String fone  = params.getString("telefone");
+            if(!intent.equals(null)){
+                String email = params.getString("email");
+                String nome = params.getString("nome");
+                String fone = params.getString("telefone");
 
-            Aluno aluno = new Aluno(nome,email,fone);
-            listaAlunos.add(aluno);
+                Aluno aluno = new Aluno(nome, email, fone);
+               // if(myAsync.equals(null)) {
+                 //   myAsync = new MinhaAsyncTask();
+                MinhaAsyncTask myAsync = new MinhaAsyncTask();
+                myAsync.execute(aluno);
+                //}
+            }
         }
         catch(Exception e){
-            Toast.makeText(getBaseContext(),"Ainda nao há alunos para exibição",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(),e.getMessage().toString(),Toast.LENGTH_SHORT).show();
         }
 
 
@@ -45,24 +55,41 @@ public class MainActivity extends AppCompatActivity{
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Adicionar.class);
-                startActivity(intent);
+                Intent intent2 = new Intent(MainActivity.this, Adicionar.class);
+                startActivity(intent2);
                 //Toast.makeText(getBaseContext(),"Entrou no click",Toast.LENGTH_SHORT).show();
             }
         });
-
-        Aluno al1 = new Aluno("Bianca","biancadorta14@gmail.com", "19997280222");
-        Aluno al2 = new Aluno("Elisinhaa","elisacs@hotmail.com","19998765435");
-        listaAlunos.add(al1);
-        listaAlunos.add(al2);
-        listarAlunos(); //de inicio nao ha nenhum aluno noa array, so havera alunos quando houver a primeira
+        //listarAlunos(); //de inicio nao ha nenhum aluno noa array, so havera alunos quando houver a primeira
                         //inclusao e as demais posteriores*/
+
+
     }
 
-    private void listarAlunos(){
-        //Como vou pegar os alunos se é o começo?
-        //pega os alunos do array list e os lista na tela
-        ArrayAdapter<Aluno> alunosAdapter = new ArrayAdapter<Aluno>(this,android.R.layout.simple_list_item_1,listaAlunos);
+    public void listarAlunos(ArrayList<Aluno> lista){
+        ArrayAdapter<Aluno> alunosAdapter = new ArrayAdapter<Aluno>(this, simple_list_item_2,lista);
         listAlunos.setAdapter(alunosAdapter);
     }
+
+    class MinhaAsyncTask extends AsyncTask<Aluno,Void, ArrayList<Aluno>> {
+        ArrayList<Aluno> listaAluno;
+
+        public MinhaAsyncTask() {
+            listaAlunos = new ArrayList<Aluno>();
+        }
+
+        @Override
+        protected ArrayList<Aluno> doInBackground(Aluno... alunos) {
+            Aluno al1 = alunos[0];
+            listaAlunos.add(al1);
+            return listaAlunos;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Aluno> alunos) {
+            listarAlunos(alunos);
+        }
+    }
+
+
 }
