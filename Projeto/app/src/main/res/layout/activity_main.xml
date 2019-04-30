@@ -8,8 +8,8 @@
 
     <ListView
         android:id="@+id/listAlunos"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="264dp"
+        android:layout_height="630dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnAdicionar"
@@ -21,4 +21,14 @@
         android:layout_marginBottom="25dp"
         android:clickable="true"
         app:srcCompat="@drawable/ic_action_name" />
+
+    <TextView
+        android:id="@+id/txtMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="211dp"
+        android:layout_marginBottom="43dp"
+        android:text="TextView" />
 </RelativeLayout>
