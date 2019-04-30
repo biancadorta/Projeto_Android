@@ -1,4 +1,4 @@
-package com.example.myapplication;
+﻿package com.example.myapplication;
 
 import android.R.layout;
 import android.content.Intent;
@@ -69,5 +69,13 @@ public class MainActivity extends AppCompatActivity{
     public void listarAlunos(ArrayList<Aluno> lista){
         ArrayAdapter<Aluno> alunosAdapter = new ArrayAdapter<Aluno>(this, simple_gallery_item,lista);
         listViewAlunos.setAdapter(alunosAdapter);
+    }
+    
+    public class MyAsyncTask extends AsyncTask<,Progresso,Resultado>{
+
+    
+
+
+    
     }
 }
